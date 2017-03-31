@@ -17,6 +17,7 @@ public class espacio extends World
     public lifes objLife;
     Tablero puntos;
     Tablero vidas;
+    private GreenfootSound backgroundMusic = new GreenfootSound("imperial.mp3");
     public espacio()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -29,7 +30,14 @@ public class espacio extends World
         addObject(puntos,150,85);
         addObject(vidas,300,85);
     }
-    
+    public void started()
+    {
+       backgroundMusic.playLoop();
+    }
+    public void stopped()
+    {
+        backgroundMusic.pause();
+    }
     
     public Tablero getTablero()
     {

@@ -34,6 +34,7 @@ public class nave extends Actor
     }
     public void setShot(int direction){
         if(isShot && Greenfoot.isKeyDown("x")){
+            Greenfoot.playSound("laser.wav");
             shot s1= new shot(direction);
             getWorld().addObject(s1,getX(),getY());
             isShot=false;
