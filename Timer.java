@@ -1,56 +1,48 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-
-
 /**
- * Write a description of class Tablero here.
+ * Write a description of class Timer here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Tablero extends Actor
+public class Timer extends Actor
 {
-    /**
-     * Act - do whatever the Tablero wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     private GreenfootImage imagen;
     private int cont;
+    private int real;
     private String mensaje;
-    
-    public Tablero(int c,String msj)
-    {
-        cont=c;
+    public Timer(int time,String msj,int r ){
+        cont=time;
+        this.real=r;
         mensaje=msj;
         imagen=new GreenfootImage(250,150);
         imagen.setColor(new Color(200,200,0,255));
         imagen.setFont(new Font("Verdana",24));
         dibuja();
     }
-   
-   public void dibuja()
+    public void dibuja()
    {
     imagen.clear();
-    imagen.drawString(mensaje+cont,20,20);
+    imagen.drawString(mensaje+real,20,20);
     setImage(imagen);   
    }
-   
-    public void incrementar()
-   {   
-       cont+=10;
-       dibuja();
-    }
    public void decrementar()
    {
-       cont-=5;
-       dibuja();
+       if ((cont%59)==0){
+           real--;
+           dibuja();
+        }
+       cont-=1;
+       
+       
    }
    public int obtenerValor()
    {
-       return cont;
+       return real;
    }
     public void act() 
     {
-        // Add your action code here.
+        
     }    
 }
