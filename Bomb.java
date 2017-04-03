@@ -23,9 +23,9 @@ public class Bomb extends Actor
     {
         int ypos = getY(); // get the current position
         // check  the missle hasn't reached the top
-        if (ypos < getWorld().getHeight() - 5)
+        if (ypos < getWorld().getHeight() - 2)
         {
-            ypos = ypos + 5;
+            ypos = ypos + 7;
             setLocation(getX(), ypos);
             killPlayer();
         } else {
@@ -35,16 +35,19 @@ public class Bomb extends Actor
     }
     public void killPlayer()
     {
-        Actor player = getOneIntersectingObject(nave.class);
-        if(player != null)
 
-{
-        
-            Greenfoot.playSound("Explosion.wav");
-            player.setImage("explosion.png");
-            getWorld().addObject(new GameOver(), 300, 200);
+        if(this.isTouching(nave.class))
+     {
+            Greenfoot.playSound("ed.mp3");
+            this.removeTouching(nave.class);
             getWorld().removeObject(this);
-            Greenfoot.stop();            
+            Greenfoot.playSound("Explosion.wav");
+
+
+
+            //Greenfoot.stop();  
+           
+            //getWorld().addObject(new nave(),400,500);
             
         }
     }

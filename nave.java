@@ -7,75 +7,65 @@ public class nave extends Actor
     public static final int LEFT=2;
     public static final int RIGHT=3;
     int directionShot=0;
+ 
     boolean isShot=false;
     public void nave(){
         
     }
     public void act() 
     {
+      if(this.isTouching(Enemigos.class)|this.isTouching(Bombardero.class)|this.isTouching(JetsK.class))
+     {
+      Greenfoot.playSound("Explosion.wav");
+      //this.removeTouching(Enemigos.class);
+      //this.getWorld().removeObject(this); 
+      
+       
+    }
+    mover();
+    setShot(directionShot);
+    }
+    public void mover(){
+        int x = getX();
+        int y = getY(); 
         if(Greenfoot.isKeyDown("up")){
-            setDireccion(UP);
+        y = y-5;
+        setLocation(getX(), y);    
             
         }
         if(Greenfoot.isKeyDown("down")){
-            setDireccion(DOWN);
+        y = y+5;
+        setLocation(getX(), y);       
             
         }
         if(Greenfoot.isKeyDown("left")){
-            setDireccion(LEFT);
+        x = x-5;
+        setLocation(x, getY());     
             
         }
         if(Greenfoot.isKeyDown("right")){
-            setDireccion(RIGHT);
+        x = x+5;
+        setLocation(x, getY());    
             
         }
-        setShot(directionShot);
-       
+
+        
     }
     public void setShot(int direction){
-        if(isShot && Greenfoot.isKeyDown("x")){
-            Greenfoot.playSound("laser.wav");
+        if(isShot && Greenfoot.isKeyDown("space")){
+            Greenfoot.playSound("shotsound.mp3");
             shot s1= new shot(direction);
             getWorld().addObject(s1,getX(),getY());
             isShot=false;
         }
-        if(!isShot && !Greenfoot.isKeyDown("x")){
+        if(!isShot && !Greenfoot.isKeyDown("space")){
             isShot=true;
         } 
     }
-    public void setDireccion(int direccion){
-        switch(direccion){
-            case UP:
-            if(Greenfoot.isKeyDown("space")){
-            setLocation(getX(),getY()-10);
-        }
-        else{
-            setLocation(getX(),getY()-1);
-        }
-            break;
-            case DOWN:
+    
+    
+    
+   
   
-             if(Greenfoot.isKeyDown("space")){
-            setLocation(getX(),getY()+10);
-        }else{
-            setLocation(getX(),getY()+1);
-        }
-            break;
-            case LEFT:
- 
-             if(Greenfoot.isKeyDown("space")){
-            setLocation(getX()-10,getY());
-        }else{
-            setLocation(getX()-1,getY());
-        }
-            break;
-            case RIGHT:
-             if(Greenfoot.isKeyDown("space")){
-            setLocation(getX()+10,getY());
-        }else{
-            setLocation(getX()+1,getY());
-        }
-            break;
-        }
-    }
+    
 }

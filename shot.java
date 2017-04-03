@@ -51,8 +51,9 @@ public class shot extends Actor
 
      if(this.isTouching(Enemigos.class))
      {
-       
+       Greenfoot.playSound("ed.mp3");
        this.getWorldOfType(espacio.class).getTablero().incrementar();
+       
        this.removeTouching(Enemigos.class);
        this.getWorld().removeObject(this); 
        

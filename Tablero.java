@@ -37,12 +37,12 @@ public class Tablero extends Actor
    
     public void incrementar()
    {   
-       cont++;
+       cont+=10;
        dibuja();
     }
    public void decrementar()
    {
-       cont--;
+       cont-=5;
        dibuja();
    }
    public int obtenerValor()

@@ -16,7 +16,7 @@ public class Enemigos extends Actor
     public void act() 
     {
         // movimiento y llegar al final de la pantalla
-        this.setLocation(this.getX(), this.getY()+1);
+        this.setLocation(this.getX(), this.getY()+5);
         this.desvanecer_enemigo();
         
         dropBomb();
