@@ -45,7 +45,7 @@ public class Tablero extends Actor
        cont-=5;
        dibuja();
    }
-   public int obtenerValor()
+   public  int obtenerValor()
    {
        return cont;
    }

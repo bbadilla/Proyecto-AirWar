@@ -27,7 +27,7 @@ public class Bomb extends Actor
         {
             ypos = ypos + 7;
             setLocation(getX(), ypos);
-            killPlayer();
+            //killPlayer();
         } else {
             getWorld().removeObject(this);
         }

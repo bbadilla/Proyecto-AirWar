@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Nodo
+comment0.text=\r\n\ Clase\ que\ define\ los\ elementos\ que\ debe\ tener\ un\ Nodo\ de\ la\ lista.\r\n\ @author\ Bryan\r\n
+comment1.params=
+comment1.target=void\ nodo()
+comment1.text=\r\n\ Constructor\ que\ inicializamos\ el\ valor\ de\ las\ variables.\r\n
+comment2.params=
+comment2.target=Enemigos\ getValor()
+comment3.params=valor
+comment3.target=void\ setValor(Enemigos)
+comment4.params=
+comment4.target=Nodo\ getSiguiente()
+comment5.params=siguiente
+comment5.target=void\ setSiguiente(Nodo)
+numComments=6
