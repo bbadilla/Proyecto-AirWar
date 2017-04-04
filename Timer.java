@@ -41,6 +41,11 @@ public class Timer extends Actor
    {
        return real;
    }
+   public void setValor(){
+       this.cont=3540;
+       real=60;
+       dibuja();
+    }
     public void act() 
     {
         

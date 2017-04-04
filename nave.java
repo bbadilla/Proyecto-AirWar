@@ -16,7 +16,7 @@ public class nave extends Actor
     {
       if(this.isTouching(Enemigos.class)|this.isTouching(Bombardero.class)|this.isTouching(JetsK.class))
      {
-      Greenfoot.playSound("Explosion.wav");
+      //Greenfoot.playSound("Explosion.wav");
       //this.removeTouching(Enemigos.class);
       //this.getWorld().removeObject(this); 
       

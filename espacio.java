@@ -16,12 +16,13 @@ public class espacio extends World
      */
     
     //Imagenes de los niveles
+    GreenfootImage img0 = new GreenfootImage("nivel1.jpg");
     GreenfootImage img1 = new GreenfootImage("nivel2.jpg");
     GreenfootImage img2 = new GreenfootImage("space.jpg");
     
     
     
-    
+    private int imageCount = 0;
     public int timer=3540;
     public int realTime=60;
     public lifes objLife;
@@ -29,7 +30,8 @@ public class espacio extends World
     Tablero vidas;
     Nivel nivel;
     Timer time;
-    private GreenfootSound backgroundMusic = new GreenfootSound("lvl1.mp3");
+    private GreenfootSound backgroundMusic = new GreenfootSound("Nivel1.mp3");
+    private GreenfootSound backgroundMusic2 = new GreenfootSound("Nivel2.mp3");
     public espacio()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -45,7 +47,7 @@ public class espacio extends World
         addObject(puntos,150,85);
         addObject(vidas,300,85);
         addObject(time,450,85);
-        
+        setBackground(img0);
         
         
         
@@ -73,7 +75,8 @@ public class espacio extends World
         if (this.nivel.getValor()==2)
         {
             setBackground(img1);
-        
+            backgroundMusic2.playLoop();
+            backgroundMusic.pause();
         }
         if (this.nivel.getValor()==3)
         {
@@ -85,23 +88,20 @@ public class espacio extends World
     
     public void SubirNivel()
     {
-         if(this.puntos.obtenerValor() == 20)
+         if(this.time.obtenerValor() == 0)
         {
-            this.puntos.incrementar();
+            this.time.setValor();
             nivel.incrementarNivel();
         }
-        if(this.puntos.obtenerValor() == 60)
-        {
-            nivel.incrementarNivel();
-            this.puntos.incrementar();
-           
-        }
+
     
     }
     
     public void act()
     {
         
+        
+
         getTimer().decrementar();
         CambiaEscena();
         SubirNivel();
@@ -126,6 +126,7 @@ public class espacio extends World
         
        
     }
-  
+    
+
 
 }
