@@ -77,8 +77,24 @@ public class espacio extends World
         }
         if (this.nivel.getValor()==3)
         {
-            setBackground(img2);
+           setBackground(img2);
         
+        }
+    
+    }
+    
+    public void SubirNivel()
+    {
+         if(this.puntos.obtenerValor() == 20)
+        {
+            this.puntos.incrementar();
+            nivel.incrementarNivel();
+        }
+        if(this.puntos.obtenerValor() == 60)
+        {
+            nivel.incrementarNivel();
+            this.puntos.incrementar();
+           
         }
     
     }
@@ -88,6 +104,7 @@ public class espacio extends World
         
         getTimer().decrementar();
         CambiaEscena();
+        SubirNivel();
         
         if(Greenfoot.getRandomNumber(300) < 2)
         {
@@ -107,14 +124,7 @@ public class espacio extends World
             this.addObject(new JetsK(),Greenfoot.getRandomNumber(500)+50, 50);  
         }
         
-        if(this.puntos.obtenerValor() == 20)
-        {
-            nivel.incrementarNivel();
-        }
-        if(this.puntos.obtenerValor() == 60)
-        {
-            nivel.incrementarNivel();
-        }
+       
     }
   
 

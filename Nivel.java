@@ -39,21 +39,14 @@ public class Nivel extends Actor
    
    public  void incrementarNivel()
    {
-      
-      while(x==nivel)
+      x= nivel;
+      if(x==nivel)
       {
            nivel +=1;
            dibuja();
-           break;
-      }
-      
-       x += 1;
-     
-       
            
-       
-    }
-
+      }
    
 
+   }
 }
