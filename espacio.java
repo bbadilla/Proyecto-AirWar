@@ -59,6 +59,7 @@ public class espacio extends World
     public void stopped()
     {
         backgroundMusic.pause();
+        backgroundMusic2.pause();
     }
     
     public Tablero getTablero()
