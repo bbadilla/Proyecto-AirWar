@@ -16,7 +16,14 @@ public class Bomb extends Actor
     public void act() 
     {
         // Add your action code here.
-        moveDown();
+       if (this.isTouching(nave.class))
+        {
+            this.killPlayer();
+        }
+        else
+        {
+            this.moveDown();
+        }
     }    
     
     public void moveDown()
@@ -36,20 +43,12 @@ public class Bomb extends Actor
     public void killPlayer()
     {
 
-        if(this.isTouching(nave.class))
-     {
-            Greenfoot.playSound("ed.mp3");
-            this.removeTouching(nave.class);
-            getWorld().removeObject(this);
-            Greenfoot.playSound("Explosion.wav");
-
-
-
-            //Greenfoot.stop();  
-           
-            //getWorld().addObject(new nave(),400,500);
-            
-        }
+       Greenfoot.playSound("ed.mp3");
+       this.getWorldOfType(espacio.class).getVida().decrementa();
+       
+        //this.removeTouching(nave.class);
+        getWorld().removeObject(this);
+        Greenfoot.playSound("Explosion.wav");
     }
 
       

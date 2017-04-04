@@ -17,9 +17,15 @@ public class Enemigos extends Actor
     {
         // movimiento y llegar al final de la pantalla
         this.setLocation(this.getX(), this.getY()+5);
-        this.desvanecer_enemigo();
-        
         dropBomb();
+       
+        if (this.isTouching(nave.class))
+        {
+            colision();
+        }
+        else{this.desvanecer_enemigo();}
+        
+        
     }  
     public void damageHealth(int amount)
         {
@@ -65,6 +71,7 @@ public class Enemigos extends Actor
         }
         
     }
+    
     public void dropBomb()
     {
        if (Greenfoot.getRandomNumber(1000) < 10)
@@ -72,6 +79,18 @@ public class Enemigos extends Actor
             //Greenfoot.playSound("lightsaber.wav");
             getWorld().addObject(new Bomb(), getX(), getY() );
         }    
+    }
+    
+    public void colision()
+    {
+        if(this.isTouching(nave.class))
+        {
+            this.getWorldOfType(espacio.class).getVida().decrementa();
+       
+            //this.removeTouching(nave.class);
+            getWorld().removeObject(this);
+            Greenfoot.playSound("Explosion.wav");
+        }
     }
   
     

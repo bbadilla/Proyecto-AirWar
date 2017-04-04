@@ -16,8 +16,14 @@ public class JetsK extends Enemigos
     {
         // Add your action code here.
         this.setLocation(this.getX(), this.getY()+15);
-        this.desvanecer_enemigo();
-        
+         if (this.isTouching(nave.class))
+        {
+            this.colision();
+        }
+        else
+        {
+            this.desvanecer_enemigo();
+        }
         
     }    
 }

@@ -15,8 +15,17 @@ public class Bombardero extends Enemigos
     public void act() 
     {
         this.setLocation(this.getX(), this.getY()+1);
-        this.desvanecer_enemigo();
-        
         dropBomb();// Add your action code here.
+        
+         if (this.isTouching(nave.class))
+        {
+            this.colision();
+        }
+        else
+        {
+            this.desvanecer_enemigo();
+        }
+        
+        
     }    
 }

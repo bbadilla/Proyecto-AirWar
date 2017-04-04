@@ -27,26 +27,29 @@ public class espacio extends World
     public int realTime=60;
     public lifes objLife;
     Tablero puntos;
-    Tablero vidas;
+    lifes vidas;
     Nivel nivel;
     Timer time;
+    GameOver perdio;
+    
     private GreenfootSound backgroundMusic = new GreenfootSound("Nivel1.mp3");
     private GreenfootSound backgroundMusic2 = new GreenfootSound("Nivel2.mp3");
+    
     public espacio()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 600, 1);
         nave n1=new nave();
         addObject(n1,400,500);
-        objLife=new lifes();
+        vidas= new lifes(3,"Vidas:");
         time=new Timer(timer,"Tiempo: ",realTime);
         puntos=new Tablero(0,"Puntaje:");
-        vidas=new Tablero(3,"Vidas:");
         nivel = new Nivel(1, "Nivel:");
         addObject(nivel, 700, 85);
         addObject(puntos,150,85);
         addObject(vidas,300,85);
         addObject(time,450,85);
+        addObject(vidas,300,85);
         setBackground(img0);
         
         
@@ -66,6 +69,12 @@ public class espacio extends World
     {
         return this.puntos;
     }
+    
+    public lifes getVida()
+    {
+        return this.vidas;
+    }
+    
     public Timer getTimer()
     {
         return this.time;
@@ -98,6 +107,15 @@ public class espacio extends World
     
     }
     
+    public void gameOver()
+    {
+        if(this.vidas.getVida()==0)
+        {
+            perdio = new GameOver();
+            addObject(perdio, 450, 400);
+        }
+    }
+    
     public void act()
     {
         
@@ -106,6 +124,7 @@ public class espacio extends World
         getTimer().decrementar();
         CambiaEscena();
         SubirNivel();
+        gameOver();
         
         if(Greenfoot.getRandomNumber(300) < 2)
         {
