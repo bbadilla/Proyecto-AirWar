@@ -18,8 +18,10 @@ public class espacio extends World
     //Imagenes de los niveles
     GreenfootImage img0 = new GreenfootImage("nivel1.jpg");
     GreenfootImage img1 = new GreenfootImage("nivel2.jpg");
-    GreenfootImage img2 = new GreenfootImage("space.jpg");
-    
+    GreenfootImage img2 = new GreenfootImage("nivel3.jpg");
+    GreenfootImage img3 = new GreenfootImage("nivel4.jpg");
+    GreenfootImage img4 = new GreenfootImage("nivel5.jpg");
+    GreenfootImage img5 = new GreenfootImage("nivel6.jpg");
     
     
     private int imageCount = 0;
@@ -31,9 +33,11 @@ public class espacio extends World
     Nivel nivel;
     Timer time;
     GameOver perdio;
-    
-    private GreenfootSound backgroundMusic = new GreenfootSound("Nivel1.mp3");
-    private GreenfootSound backgroundMusic2 = new GreenfootSound("Nivel2.mp3");
+
+    //Song de los niveles
+    private GreenfootSound backgroundMusic = new GreenfootSound("1.mp3");
+    private GreenfootSound backgroundMusic2 = new GreenfootSound("2.mp3");
+    private GreenfootSound backgroundMusic3 = new GreenfootSound("3.mp3");
     
     public espacio()
     {    
@@ -63,6 +67,7 @@ public class espacio extends World
     {
         backgroundMusic.pause();
         backgroundMusic2.pause();
+        backgroundMusic3.pause();
     }
     
     public Tablero getTablero()
@@ -91,8 +96,25 @@ public class espacio extends World
         if (this.nivel.getValor()==3)
         {
            setBackground(img2);
+           backgroundMusic3.playLoop();
+           backgroundMusic2.pause();
+        }
+        if (this.nivel.getValor()==4)
+        {
+           setBackground(img3);
         
         }
+        if (this.nivel.getValor()==5)
+        {
+           setBackground(img4);
+        
+        }
+        if (this.nivel.getValor()==6)
+        {
+           setBackground(img5);
+        
+        }
+      
     
     }
     
@@ -111,6 +133,7 @@ public class espacio extends World
     {
         if(this.vidas.getVida()==0)
         {
+            Greenfoot.playSound("GameOver.mp3");
             perdio = new GameOver();
             addObject(perdio, 450, 400);
         }

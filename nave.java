@@ -60,8 +60,13 @@ public class nave extends Actor
         }
         if(!isShot && !Greenfoot.isKeyDown("space")){
             isShot=true;
-        } 
+        }
+        
     }
+    public  int obtenerValorY()
+   {
+       return getY();
+   }
     
     
     
