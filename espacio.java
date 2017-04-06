@@ -20,7 +20,7 @@ public class espacio extends World
     //Imagenes de los niveles
     GreenfootImage img0 = new GreenfootImage("nivel1.jpg");
     GreenfootImage img1 = new GreenfootImage("nivel2.jpg");
-    GreenfootImage img2 = new GreenfootImage("space.jpg");
+    GreenfootImage img2 = new GreenfootImage("nivel3.jpg");
     
     
     
@@ -36,8 +36,9 @@ public class espacio extends World
     pilaPowers pila;
     PowerUp escudo;
     
-    private GreenfootSound backgroundMusic = new GreenfootSound("Nivel1.mp3");
-    private GreenfootSound backgroundMusic2 = new GreenfootSound("Nivel2.mp3");
+    private GreenfootSound backgroundMusic = new GreenfootSound("1.mp3");
+    private GreenfootSound backgroundMusic2 = new GreenfootSound("2.mp3");
+    private GreenfootSound backgroundMusic3 = new GreenfootSound("3.mp3");
     
     public espacio()
     {    
@@ -69,6 +70,7 @@ public class espacio extends World
     {
         backgroundMusic.pause();
         backgroundMusic2.pause();
+        backgroundMusic3.pause();
     }
     
     public Tablero getTablero()
@@ -118,6 +120,7 @@ public class espacio extends World
         if(this.vidas.getVida()==0)
         {
             perdio = new GameOver();
+            Greenfoot.playSound("GameOver.mp3");
             addObject(perdio, 450, 400);
         }
     }
