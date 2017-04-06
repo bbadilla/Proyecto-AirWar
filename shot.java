@@ -47,8 +47,7 @@ public class shot extends Actor
     
     //metodo para eliminar enemigo
      public void shooting()
-    {
-
+     {
      if(this.isTouching(Enemigos.class))
      {
        Greenfoot.playSound("ed.mp3");

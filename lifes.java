@@ -15,6 +15,7 @@ public class lifes extends Actor
     GreenfootImage imagen;
     private int vidas;   
     String mensaje;
+    int x;
    
    
     

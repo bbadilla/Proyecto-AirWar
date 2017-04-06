@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=pilaPowers
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ pilaPowers\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=o
+comment1.target=void\ push(java.lang.Object)
+comment2.params=
+comment2.target=java.lang.Object\ pop()
+comment3.params=
+comment3.target=java.lang.Object\ peek()
+comment4.params=
+comment4.target=void\ sizePila()
+comment5.params=
+comment5.target=java.lang.Boolean\ empty()
+numComments=6

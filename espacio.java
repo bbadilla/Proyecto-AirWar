@@ -1,5 +1,7 @@
 import greenfoot.*;
-import java.util.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.*;  
+import java.awt.*;
+
 
 /**
  * Write a description of class espacio here.
@@ -18,10 +20,8 @@ public class espacio extends World
     //Imagenes de los niveles
     GreenfootImage img0 = new GreenfootImage("nivel1.jpg");
     GreenfootImage img1 = new GreenfootImage("nivel2.jpg");
-    GreenfootImage img2 = new GreenfootImage("nivel3.jpg");
-    GreenfootImage img3 = new GreenfootImage("nivel4.jpg");
-    GreenfootImage img4 = new GreenfootImage("nivel5.jpg");
-    GreenfootImage img5 = new GreenfootImage("nivel6.jpg");
+    GreenfootImage img2 = new GreenfootImage("space.jpg");
+    
     
     
     private int imageCount = 0;
@@ -33,11 +33,11 @@ public class espacio extends World
     Nivel nivel;
     Timer time;
     GameOver perdio;
-
-    //Song de los niveles
-    private GreenfootSound backgroundMusic = new GreenfootSound("1.mp3");
-    private GreenfootSound backgroundMusic2 = new GreenfootSound("2.mp3");
-    private GreenfootSound backgroundMusic3 = new GreenfootSound("3.mp3");
+    pilaPowers pila;
+    PowerUp escudo;
+    
+    private GreenfootSound backgroundMusic = new GreenfootSound("Nivel1.mp3");
+    private GreenfootSound backgroundMusic2 = new GreenfootSound("Nivel2.mp3");
     
     public espacio()
     {    
@@ -56,18 +56,19 @@ public class espacio extends World
         addObject(vidas,300,85);
         setBackground(img0);
         
-        
+        //powerUps
         
     }
+    
     public void started()
     {
        backgroundMusic.playLoop();
     }
+    
     public void stopped()
     {
         backgroundMusic.pause();
         backgroundMusic2.pause();
-        backgroundMusic3.pause();
     }
     
     public Tablero getTablero()
@@ -96,25 +97,8 @@ public class espacio extends World
         if (this.nivel.getValor()==3)
         {
            setBackground(img2);
-           backgroundMusic3.playLoop();
-           backgroundMusic2.pause();
-        }
-        if (this.nivel.getValor()==4)
-        {
-           setBackground(img3);
         
         }
-        if (this.nivel.getValor()==5)
-        {
-           setBackground(img4);
-        
-        }
-        if (this.nivel.getValor()==6)
-        {
-           setBackground(img5);
-        
-        }
-      
     
     }
     
@@ -133,22 +117,40 @@ public class espacio extends World
     {
         if(this.vidas.getVida()==0)
         {
-            Greenfoot.playSound("GameOver.mp3");
             perdio = new GameOver();
             addObject(perdio, 450, 400);
         }
     }
     
+    public void vidaNueva()
+    {
+        if((this.puntos.obtenerValor()%100)==0 && this.puntos.obtenerValor()!=0)
+        {
+            this.vidas.incrementar();
+            this.puntos.incrementar();
+        }
+    }
+    
+    public void pushPila()
+    {
+        this.pila.push(escudo);
+    }
+    
+       
     public void act()
     {
-        
-        
-
+        vidaNueva();
         getTimer().decrementar();
         CambiaEscena();
         SubirNivel();
         gameOver();
         
+        
+        if(Greenfoot.getRandomNumber(10) < 2)
+        {
+           
+            this.addObject(new Stars(),Greenfoot.getRandomNumber(800)+50, 50);  
+        }
         if(Greenfoot.getRandomNumber(300) < 2)
         {
             

@@ -8,6 +8,4 @@ comment3.params=
 comment3.target=void\ mover()
 comment4.params=direction
 comment4.target=void\ setShot(int)
-comment5.params=
-comment5.target=int\ obtenerValorY()
-numComments=6
+numComments=5

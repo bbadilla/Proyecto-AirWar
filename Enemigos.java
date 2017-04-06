@@ -27,6 +27,7 @@ public class Enemigos extends Actor
         
         
     }  
+    
     public void damageHealth(int amount)
         {
             if (enemyHealth > 1) //if not dead yet
@@ -38,6 +39,7 @@ public class Enemigos extends Actor
             }
         
     } 
+    
     public void setShot()
     {
         
@@ -45,6 +47,7 @@ public class Enemigos extends Actor
         getWorld().addObject(xd,getX(),getY());
         
     }
+    
     public void moveDown()
     {
         int ypos = getY(); // get the current position
@@ -60,8 +63,6 @@ public class Enemigos extends Actor
         
     }
 
-    
-    
     public void desvanecer_enemigo()
     {
         if(this.isAtEdge())

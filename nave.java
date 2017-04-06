@@ -9,9 +9,8 @@ public class nave extends Actor
     int directionShot=0;
  
     boolean isShot=false;
-    public void nave(){
-        
-    }
+    public void nave(){}
+    
     public void act() 
     {
       if(this.isTouching(Enemigos.class)|this.isTouching(Bombardero.class)|this.isTouching(JetsK.class))
@@ -60,13 +59,8 @@ public class nave extends Actor
         }
         if(!isShot && !Greenfoot.isKeyDown("space")){
             isShot=true;
-        }
-        
+        } 
     }
-    public  int obtenerValorY()
-   {
-       return getY();
-   }
     
     
     
