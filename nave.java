@@ -7,23 +7,29 @@ public class nave extends Actor
     public static final int LEFT=2;
     public static final int RIGHT=3;
     int directionShot=0;
+    int directionLaser=0;
  
     boolean isShot=false;
+    boolean isLaser=false;
+    boolean isMisil=false;
     public void nave(){}
     
     public void act() 
     {
-      if(this.isTouching(Enemigos.class)|this.isTouching(Bombardero.class)|this.isTouching(JetsK.class))
-     {
-      //Greenfoot.playSound("Explosion.wav");
-      //this.removeTouching(Enemigos.class);
-      //this.getWorld().removeObject(this); 
+        if(this.isTouching(Enemigos.class)|this.isTouching(Bombardero.class)|this.isTouching(JetsK.class))
+        {
+          //Greenfoot.playSound("Explosion.wav");
+          //this.removeTouching(Enemigos.class);
+          //this.getWorld().removeObject(this); 
       
        
+         }
+        
+        mover();
+        setShot(directionShot);
+        
     }
-    mover();
-    setShot(directionShot);
-    }
+    
     public void mover(){
         int x = getX();
         int y = getY(); 
@@ -50,6 +56,7 @@ public class nave extends Actor
 
         
     }
+    
     public void setShot(int direction){
         if(isShot && Greenfoot.isKeyDown("space")){
             Greenfoot.playSound("shotsound.mp3");
@@ -62,7 +69,18 @@ public class nave extends Actor
         } 
     }
     
+    public void setLaser(int direction){
+        if(isShot && Greenfoot.isKeyDown("x")){
+            Greenfoot.playSound("shotsound.mp3");
+            LaserDisparo ls= new LaserDisparo(direction);
+            getWorld().addObject(ls,getX(),getY());
+            isLaser=false;
+        }
+        if(!isShot && !Greenfoot.isKeyDown("space")){
+            isLaser=true;
+        } 
     
+    }
     
    
   

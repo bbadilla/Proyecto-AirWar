@@ -8,16 +8,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class PowerUp extends Actor
 {
-    public void asignar()
+    public void agarra()
     {
-        if(this.isTouching(nave.class))
-        {
+         if(this.isTouching(nave.class))
+         {
            this.getWorldOfType(espacio.class).pushPila();
+           this.getWorld().removeObject(this); 
         }
-    
     }
     public void act() 
     {
         // Add your action code here.
+        agarra();
     }    
 }

@@ -20,7 +20,7 @@ public class espacio extends World
     //Imagenes de los niveles
     GreenfootImage img0 = new GreenfootImage("nivel1.jpg");
     GreenfootImage img1 = new GreenfootImage("nivel2.jpg");
-    GreenfootImage img2 = new GreenfootImage("nivel3.jpg");
+    GreenfootImage img2 = new GreenfootImage("space.jpg");
     
     
     
@@ -28,23 +28,28 @@ public class espacio extends World
     public int timer=3540;
     public int realTime=60;
     public lifes objLife;
+	int directionLaser=0;
+
+    
     Tablero puntos;
     lifes vidas;
     Nivel nivel;
     Timer time;
     GameOver perdio;
-    pilaPowers pila;
-    PowerUp escudo;
+    pilaPower pila ;
+    Escudo escudo;
+    Misil misil;
+    Laser laser;
+	nave n1;
     
-    private GreenfootSound backgroundMusic = new GreenfootSound("1.mp3");
-    private GreenfootSound backgroundMusic2 = new GreenfootSound("2.mp3");
-    private GreenfootSound backgroundMusic3 = new GreenfootSound("3.mp3");
+    private GreenfootSound backgroundMusic = new GreenfootSound("Nivel1.mp3");
+    private GreenfootSound backgroundMusic2 = new GreenfootSound("Nivel2.mp3");
     
     public espacio()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 600, 1);
-        nave n1=new nave();
+        n1=new nave();
         addObject(n1,400,500);
         vidas= new lifes(3,"Vidas:");
         time=new Timer(timer,"Tiempo: ",realTime);
@@ -52,12 +57,15 @@ public class espacio extends World
         nivel = new Nivel(1, "Nivel:");
         addObject(nivel, 700, 85);
         addObject(puntos,150,85);
-        addObject(vidas,300,85);
         addObject(time,450,85);
         addObject(vidas,300,85);
         setBackground(img0);
         
         //powerUps
+		pila = new pilaPower();
+        escudo = new Escudo();
+        laser = new Laser();
+        misil = new Misil();
         
     }
     
@@ -70,7 +78,6 @@ public class espacio extends World
     {
         backgroundMusic.pause();
         backgroundMusic2.pause();
-        backgroundMusic3.pause();
     }
     
     public Tablero getTablero()
@@ -120,7 +127,6 @@ public class espacio extends World
         if(this.vidas.getVida()==0)
         {
             perdio = new GameOver();
-            Greenfoot.playSound("GameOver.mp3");
             addObject(perdio, 450, 400);
         }
     }
@@ -137,9 +143,39 @@ public class espacio extends World
     public void pushPila()
     {
         this.pila.push(escudo);
+        this.pila.push(misil);
+        this.pila.push(laser);
+        
     }
     
-       
+    public void aparecerPowers()
+    {
+        if(this.getTimer().obtenerValor()==30)
+        {
+            addObject(escudo, Greenfoot.getRandomNumber(700),Greenfoot.getRandomNumber(550)+85);    
+        }
+        
+        if(this.getTimer().obtenerValor()==5)
+        {
+            addObject(misil, Greenfoot.getRandomNumber(700),Greenfoot.getRandomNumber(550)+85);    
+        }
+        
+       if((this.puntos.obtenerValor()%50)==0 && this.puntos.obtenerValor()!=0)
+        {
+            this.puntos.incrementar();
+            addObject(laser, Greenfoot.getRandomNumber(700),Greenfoot.getRandomNumber(550)+85); 
+        }
+    }
+
+	public void activarPowers()
+	{
+		int x = 0;
+		if(this.pila.peek() == this.laser)
+		{
+			this.n1.setLaser(directionLaser);
+		}
+	}
+
     public void act()
     {
         vidaNueva();
@@ -147,7 +183,8 @@ public class espacio extends World
         CambiaEscena();
         SubirNivel();
         gameOver();
-        
+        aparecerPowers();
+		activarPowers();
         
         if(Greenfoot.getRandomNumber(10) < 2)
         {

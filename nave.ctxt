@@ -8,4 +8,6 @@ comment3.params=
 comment3.target=void\ mover()
 comment4.params=direction
 comment4.target=void\ setShot(int)
-numComments=5
+comment5.params=direction
+comment5.target=void\ setLaser(int)
+numComments=6

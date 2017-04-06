@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=LaserDisparo
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ PowerDisparo\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=direction
+comment1.target=LaserDisparo(int)
+comment2.params=
+comment2.target=void\ movimiento()
+comment3.params=
+comment3.target=void\ act()
+comment4.params=
+comment4.target=void\ shooting()
+comment5.params=
+comment5.target=void\ desvanecer()
+numComments=6
