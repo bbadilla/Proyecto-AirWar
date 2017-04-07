@@ -10,4 +10,6 @@ comment4.params=direction
 comment4.target=void\ setShot(int)
 comment5.params=direction
 comment5.target=void\ setLaser(int)
-numComments=6
+comment6.params=direction
+comment6.target=void\ setMisil(int)
+numComments=7

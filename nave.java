@@ -76,12 +76,24 @@ public class nave extends Actor
             getWorld().addObject(ls,getX(),getY());
             isLaser=false;
         }
-        if(!isShot && !Greenfoot.isKeyDown("space")){
+        if(!isShot && !Greenfoot.isKeyDown("x")){
             isLaser=true;
         } 
     
     }
     
+    public void setMisil(int direction){
+        if(isShot && Greenfoot.isKeyDown("c")){
+            Greenfoot.playSound("shotsound.mp3");
+            MisilDisparo ms= new MisilDisparo(direction);
+            getWorld().addObject(ms,getX(),getY());
+            isMisil=false;
+        }
+        if(!isShot && !Greenfoot.isKeyDown("c")){
+            isMisil=true;
+        } 
+    
+    }
    
   
     

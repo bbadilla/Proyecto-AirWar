@@ -22,14 +22,16 @@ public class espacio extends World
     GreenfootImage img1 = new GreenfootImage("nivel2.jpg");
     GreenfootImage img2 = new GreenfootImage("space.jpg");
     
-    DoubleLinkedList<String> cola = new DoubleLinkedList<String>();
+    
     
     private int imageCount = 0;
     public int timer=3540;
     public int realTime=60;
     public lifes objLife;
     int directionLaser=0;
-
+    int directionMisil=0;
+    int x = 0;
+    
     
     Tablero puntos;
     lifes vidas;
@@ -42,8 +44,8 @@ public class espacio extends World
     Laser laser;
     nave n1;
     
-    private GreenfootSound backgroundMusic = new GreenfootSound("1.mp3");
-    private GreenfootSound backgroundMusic2 = new GreenfootSound("2.mp3");
+    private GreenfootSound backgroundMusic = new GreenfootSound("Nivel1.mp3");
+    private GreenfootSound backgroundMusic2 = new GreenfootSound("Nivel2.mp3");
     
     public espacio()
     {    
@@ -60,7 +62,7 @@ public class espacio extends World
         addObject(time,450,85);
         addObject(vidas,300,85);
         setBackground(img0);
-        cola1();
+        
         //powerUps
         pila = new pilaPower();
         escudo = new Escudo();
@@ -140,37 +142,25 @@ public class espacio extends World
         }
     }
     
-    public void pushPila()
+    public void pushPilaEscudo()
+    {   
+         this.pila.push(escudo);  
+         
+        
+      
+    }
+    public void pushPilaLaser()
     {
-        this.pila.push(escudo);
-        this.pila.push(misil);
-        this.pila.push(laser);
+        this.pila.push(laser); 
+        
         
     }
-    public void cola1(){
-        this.cola.addLast("Jet");
-        this.cola.addLast("Bombardero");
-        this.cola.addLast("JetK");
+    public void pushPilaMisil()
+    {
+        this.pila.push(misil);
+        
     }
-    public void Spawn(){
-        if(this.cola.getAt(0)!=null){
-            String nave=this.cola.getHead().getData();
-            if(nave=="Jet"){
-                this.addObject(new Enemigos(), Greenfoot.getRandomNumber(500)+50 , 50);  
-                
-            }
-            else if(nave=="Bombardero"){
-                this.addObject(new Bombardero(), Greenfoot.getRandomNumber(500)+50 , 50); 
-                
-            }
-            else if(nave=="JetK"){
-                this.addObject(new JetsK(), Greenfoot.getRandomNumber(500)+50 , 50);  
-                
-            }
-            
-
-        }
-    }
+    
     public void aparecerPowers()
     {
         if(this.getTimer().obtenerValor()==30)
@@ -178,7 +168,7 @@ public class espacio extends World
             addObject(escudo, Greenfoot.getRandomNumber(700),Greenfoot.getRandomNumber(550)+85);    
         }
         
-        if(this.getTimer().obtenerValor()==5)
+        if(this.getTimer().obtenerValor()==50)
         {
             addObject(misil, Greenfoot.getRandomNumber(700),Greenfoot.getRandomNumber(550)+85);    
         }
@@ -192,11 +182,34 @@ public class espacio extends World
 
     public void activarPowers()
     {
-        int x = 0;
-        if(this.pila.peek() == this.laser)
+       
+            if(this.pila.peek() == this.misil)
+            {   
+                this.n1.setMisil(directionMisil);
+                
+            }
+            if(this.pila.peek() == this.laser)
+            {
+                this.n1.setLaser(directionLaser);
+                
+            }
+            if(this.pila.peek() == this.escudo)
+            {
+               
+            }
+        
+        
+        
+    }
+    
+    public void popPower()
+    {
+        if (this.getTimer().obtenerValor()%10 == 0)
         {
-            this.n1.setLaser(directionLaser);
+            pila.pop();
+            activarPowers();
         }
+        
     }
 
     public void act()
@@ -208,16 +221,31 @@ public class espacio extends World
         gameOver();
         aparecerPowers();
         activarPowers();
-        if(((this.time.obtenerValor())%2==0)){
-        Spawn();
+        popPower();
         
-        }
+        
         if(Greenfoot.getRandomNumber(10) < 2)
         {
            
             this.addObject(new Stars(),Greenfoot.getRandomNumber(800)+50, 50);  
         }
-        
+        if(Greenfoot.getRandomNumber(300) < 2)
+        {
+            
+            this.addObject(new Enemigos(), Greenfoot.getRandomNumber(500)+50 , 50);  
+
+        }
+        if(Greenfoot.getRandomNumber(400) < 2)
+        {
+            
+            this.addObject(new Bombardero(), Greenfoot.getRandomNumber(500)+50 , 50);  
+            
+        }
+        if(Greenfoot.getRandomNumber(1000) < 2)
+        {
+           
+            this.addObject(new JetsK(),Greenfoot.getRandomNumber(500)+50, 50);  
+        }
         
        
     }

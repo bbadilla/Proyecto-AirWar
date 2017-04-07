@@ -6,12 +6,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Misil extends PowerUp
+public class Misil extends Actor
 {
-    /**
-     * Act - do whatever the Misil wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    
+     public void agarra()
+    {
+         if(this.isTouching(nave.class))
+         {
+           this.getWorldOfType(espacio.class).pushPilaMisil();
+           this.getWorld().removeObject(this); 
+        }
+    }
     public void act() 
     {
         // Add your action code here.
