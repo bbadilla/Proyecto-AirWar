@@ -20,6 +20,7 @@ public class Bomb extends Actor
         {
             this.killPlayer();
         }
+      
         else
         {
             this.moveDown();
@@ -50,7 +51,13 @@ public class Bomb extends Actor
         getWorld().removeObject(this);
         Greenfoot.playSound("Explosion.wav");
     }
-
+    
+    public void killEscudo()
+    {
+        getWorld().removeObject(this);
+        Greenfoot.playSound("Explosion.wav");
+    
+    }
       
         
     }

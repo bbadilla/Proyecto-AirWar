@@ -8,4 +8,6 @@ comment2.params=
 comment2.target=void\ moveDown()
 comment3.params=
 comment3.target=void\ killPlayer()
-numComments=4
+comment4.params=
+comment4.target=void\ killEscudo()
+numComments=5

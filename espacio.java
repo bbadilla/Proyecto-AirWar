@@ -43,6 +43,7 @@ public class espacio extends World
     Misil misil;
     Laser laser;
     nave n1;
+    BurbujaEscudo es;
     
     private GreenfootSound backgroundMusic = new GreenfootSound("Nivel1.mp3");
     private GreenfootSound backgroundMusic2 = new GreenfootSound("Nivel2.mp3");
@@ -68,6 +69,7 @@ public class espacio extends World
         escudo = new Escudo();
         laser = new Laser();
         misil = new Misil();
+        es=new BurbujaEscudo();
         
     }
     
@@ -163,12 +165,12 @@ public class espacio extends World
     
     public void aparecerPowers()
     {
-        if(this.getTimer().obtenerValor()==30)
+        if(this.getTimer().obtenerValor()==50)
         {
             addObject(escudo, Greenfoot.getRandomNumber(700),Greenfoot.getRandomNumber(550)+85);    
         }
         
-        if(this.getTimer().obtenerValor()==50)
+        if(this.getTimer().obtenerValor()==30)
         {
             addObject(misil, Greenfoot.getRandomNumber(700),Greenfoot.getRandomNumber(550)+85);    
         }
@@ -195,7 +197,9 @@ public class espacio extends World
             }
             if(this.pila.peek() == this.escudo)
             {
-               
+                
+                addObject(es,n1.getX(),n1.getY());
+                
             }
         
         
