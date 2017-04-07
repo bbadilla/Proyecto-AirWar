@@ -3,12 +3,12 @@
 public class pilaPower 
 {
 	class Node {
-	    private Object elem;
-	    private Node Next;
+	    Object elem;
+	    Node Next;
 
 	    public Node(Object o) {
-	      this.elem = o;
-	      this.Next = null;
+	      elem = o;
+	      Next = null;
 	    }
 	  }
 
