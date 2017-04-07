@@ -27,6 +27,7 @@ public class nave extends Actor
         
         mover();
         setShot(directionShot);
+        activaEscudo();
         
     }
     
@@ -93,6 +94,15 @@ public class nave extends Actor
             isMisil=true;
         } 
     
+    }
+    
+    public void activaEscudo()
+    {
+        if(Greenfoot.isKeyDown("v")){
+            
+            this.getWorldOfType(espacio.class).activarPowers();
+            
+        }
     }
    
   

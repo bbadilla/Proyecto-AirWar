@@ -44,6 +44,9 @@ public class espacio extends World
     Laser laser;
     nave n1;
     BurbujaEscudo es;
+    ListaTorres listaT;
+    Torre torre; 
+    TorreMisil torreM;
     
     private GreenfootSound backgroundMusic = new GreenfootSound("Nivel1.mp3");
     private GreenfootSound backgroundMusic2 = new GreenfootSound("Nivel2.mp3");
@@ -70,6 +73,11 @@ public class espacio extends World
         laser = new Laser();
         misil = new Misil();
         es=new BurbujaEscudo();
+        
+        listaT = new ListaTorres();
+        torre = new Torre();
+        torreM = new TorreMisil();
+        
         
     }
     
@@ -118,18 +126,14 @@ public class espacio extends World
     public void SubirNivel()
     {
          if(this.time.obtenerValor() == 0)
-        { 
-            Boss();
-            this.time.setValor(true);
+        {
+            this.time.setValor();
             nivel.incrementarNivel();
         }
 
     
     }
-    public  void Boss()
-    {
-       this.addObject(new Boss(),Greenfoot.getRandomNumber(500)+50, 50);  
-    }
+    
     public void gameOver()
     {
         if(this.vidas.getVida()==0)
@@ -204,11 +208,9 @@ public class espacio extends World
                 
                 addObject(es,n1.getX(),n1.getY());
                 
-            }
-        
-        
-        
+            }  
     }
+   
     
     public void popPower()
     {
@@ -218,6 +220,46 @@ public class espacio extends World
             activarPowers();
         }
         
+    }
+    
+    public void AgregarTorres()
+    {
+        if(this.getTimer().obtenerValor()==58)
+        {
+            listaT.agregarFinal(this.torre);
+            listaT.agregarFinal(this.torre);
+            listaT.agregarFinal(this.torreM);
+            listaT.agregarFinal(this.torre);
+            listaT.agregarFinal(this.torreM);
+            listaT.agregarFinal(this.torre);
+            listaT.agregarFinal(this.torreM);
+            listaT.agregarFinal(this.torre);
+        }
+    }
+    
+    public void dibujarTorres()
+    {
+        if((this.getTimer().obtenerValor()%10 == 0) && (this.getTimer().obtenerValor()!=60) && (this.getTimer().obtenerValor()!=0))
+        {
+            if(this.listaT.mostrar()== this.torre)
+            {
+                addObject(torre, Greenfoot.getRandomNumber(500)+50 , 50);
+            }
+        
+            if(this.listaT.mostrar()== this.torreM)
+            {
+                addObject(torreM, Greenfoot.getRandomNumber(500)+50 , 50);
+            }
+        }
+    }
+    
+    public void eliminaTorres()
+    {
+        if(this.getTimer().obtenerValor()==55 || this.getTimer().obtenerValor()==45 || this.getTimer().obtenerValor()==35 || this.getTimer().obtenerValor()==25 || this.getTimer().obtenerValor()==15 || this.getTimer().obtenerValor()==5)
+        {
+            this.listaT.eliminarFinal(); 
+        
+        }
     }
 
     public void act()
@@ -230,15 +272,16 @@ public class espacio extends World
         aparecerPowers();
         activarPowers();
         popPower();
+        AgregarTorres();
+        dibujarTorres();
+        eliminaTorres();
         
-
-
+        
         if(Greenfoot.getRandomNumber(10) < 2)
         {
            
             this.addObject(new Stars(),Greenfoot.getRandomNumber(800)+50, 50);  
         }
-        if(this.time.obtenerValor() > 0){
         if(Greenfoot.getRandomNumber(300) < 2)
         {
             
@@ -259,7 +302,7 @@ public class espacio extends World
         
        
     }
-}
+    
 
 
 }
