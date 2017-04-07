@@ -118,14 +118,18 @@ public class espacio extends World
     public void SubirNivel()
     {
          if(this.time.obtenerValor() == 0)
-        {
-            this.time.setValor();
+        { 
+            Boss();
+            this.time.setValor(true);
             nivel.incrementarNivel();
         }
 
     
     }
-    
+    public  void Boss()
+    {
+       this.addObject(new Boss(),Greenfoot.getRandomNumber(500)+50, 50);  
+    }
     public void gameOver()
     {
         if(this.vidas.getVida()==0)
@@ -227,12 +231,14 @@ public class espacio extends World
         activarPowers();
         popPower();
         
-        
+
+
         if(Greenfoot.getRandomNumber(10) < 2)
         {
            
             this.addObject(new Stars(),Greenfoot.getRandomNumber(800)+50, 50);  
         }
+        if(this.time.obtenerValor() > 0){
         if(Greenfoot.getRandomNumber(300) < 2)
         {
             
@@ -253,7 +259,7 @@ public class espacio extends World
         
        
     }
-    
+}
 
 
 }

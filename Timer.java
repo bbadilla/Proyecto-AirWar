@@ -12,6 +12,7 @@ public class Timer extends Actor
     private int cont;
     private int real;
     private String mensaje;
+
     public Timer(int time,String msj,int r ){
         cont=time;
         this.real=r;
@@ -41,11 +42,16 @@ public class Timer extends Actor
    {
        return real;
    }
-   public void setValor(){
+   public void setValor(boolean valid){
+       if (valid==false){
        this.cont=3540;
        real=60;
-       dibuja();
+       dibuja();}else{
+       this.cont=0;
+       real=0;    
     }
+    }
+
     public void act() 
     {
         
