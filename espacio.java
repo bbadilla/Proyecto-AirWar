@@ -22,13 +22,13 @@ public class espacio extends World
     GreenfootImage img1 = new GreenfootImage("nivel2.jpg");
     GreenfootImage img2 = new GreenfootImage("space.jpg");
     
-    
+    DoubleLinkedList<String> cola = new DoubleLinkedList<String>();
     
     private int imageCount = 0;
     public int timer=3540;
     public int realTime=60;
     public lifes objLife;
-	int directionLaser=0;
+    int directionLaser=0;
 
     
     Tablero puntos;
@@ -40,10 +40,10 @@ public class espacio extends World
     Escudo escudo;
     Misil misil;
     Laser laser;
-	nave n1;
+    nave n1;
     
-    private GreenfootSound backgroundMusic = new GreenfootSound("Nivel1.mp3");
-    private GreenfootSound backgroundMusic2 = new GreenfootSound("Nivel2.mp3");
+    private GreenfootSound backgroundMusic = new GreenfootSound("1.mp3");
+    private GreenfootSound backgroundMusic2 = new GreenfootSound("2.mp3");
     
     public espacio()
     {    
@@ -60,9 +60,9 @@ public class espacio extends World
         addObject(time,450,85);
         addObject(vidas,300,85);
         setBackground(img0);
-        
+        cola1();
         //powerUps
-		pila = new pilaPower();
+        pila = new pilaPower();
         escudo = new Escudo();
         laser = new Laser();
         misil = new Misil();
@@ -147,7 +147,30 @@ public class espacio extends World
         this.pila.push(laser);
         
     }
-    
+    public void cola1(){
+        this.cola.addLast("Jet");
+        this.cola.addLast("Bombardero");
+        this.cola.addLast("JetK");
+    }
+    public void Spawn(){
+        if(this.cola.getAt(0)!=null){
+            String nave=this.cola.getHead().getData();
+            if(nave=="Jet"){
+                this.addObject(new Enemigos(), Greenfoot.getRandomNumber(500)+50 , 50);  
+                
+            }
+            else if(nave=="Bombardero"){
+                this.addObject(new Bombardero(), Greenfoot.getRandomNumber(500)+50 , 50); 
+                
+            }
+            else if(nave=="JetK"){
+                this.addObject(new JetsK(), Greenfoot.getRandomNumber(500)+50 , 50);  
+                
+            }
+            
+
+        }
+    }
     public void aparecerPowers()
     {
         if(this.getTimer().obtenerValor()==30)
@@ -167,14 +190,14 @@ public class espacio extends World
         }
     }
 
-	public void activarPowers()
-	{
-		int x = 0;
-		if(this.pila.peek() == this.laser)
-		{
-			this.n1.setLaser(directionLaser);
-		}
-	}
+    public void activarPowers()
+    {
+        int x = 0;
+        if(this.pila.peek() == this.laser)
+        {
+            this.n1.setLaser(directionLaser);
+        }
+    }
 
     public void act()
     {
@@ -184,30 +207,17 @@ public class espacio extends World
         SubirNivel();
         gameOver();
         aparecerPowers();
-		activarPowers();
+        activarPowers();
+        if(((this.time.obtenerValor())%2==0)){
+        Spawn();
         
+        }
         if(Greenfoot.getRandomNumber(10) < 2)
         {
            
             this.addObject(new Stars(),Greenfoot.getRandomNumber(800)+50, 50);  
         }
-        if(Greenfoot.getRandomNumber(300) < 2)
-        {
-            
-            this.addObject(new Enemigos(), Greenfoot.getRandomNumber(500)+50 , 50);  
-
-        }
-        if(Greenfoot.getRandomNumber(400) < 2)
-        {
-            
-            this.addObject(new Bombardero(), Greenfoot.getRandomNumber(500)+50 , 50);  
-            
-        }
-        if(Greenfoot.getRandomNumber(1000) < 2)
-        {
-           
-            this.addObject(new JetsK(),Greenfoot.getRandomNumber(500)+50, 50);  
-        }
+        
         
        
     }

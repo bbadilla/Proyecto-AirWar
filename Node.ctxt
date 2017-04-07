@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Node
+comment1.params=data
+comment1.target=Node(java.lang.Object)
+comment2.params=
+comment2.target=java.lang.Object\ getData()
+comment3.params=data
+comment3.target=void\ setData(java.lang.Object)
+comment4.params=
+comment4.target=Node\ getNext()
+comment5.params=next
+comment5.target=void\ setNext(Node)
+comment6.params=
+comment6.target=Node\ getPrevious()
+comment7.params=previous
+comment7.target=void\ setPrevious(Node)
+numComments=8
