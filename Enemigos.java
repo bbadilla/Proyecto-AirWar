@@ -1,13 +1,19 @@
 
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-
+/**
+ * Write a description of class Enemigos here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
 public class Enemigos extends Actor
 {
-    //variable
     private int enemyHealth = 1;
-    
-    //actor
+    /**
+     * Act - do whatever the Enemigos wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     public void act() 
     {
         // movimiento y llegar al final de la pantalla
@@ -23,7 +29,6 @@ public class Enemigos extends Actor
         
     }  
     
-    //valor de vida
     public void damageHealth(int amount)
         {
             if (enemyHealth > 1) //if not dead yet
@@ -36,7 +41,6 @@ public class Enemigos extends Actor
         
     } 
     
-    //crea el disparo
     public void setShot()
     {
         
@@ -45,7 +49,6 @@ public class Enemigos extends Actor
         
     }
     
-    //mover
     public void moveDown()
     {
         int ypos = getY(); // get the current position
@@ -61,7 +64,6 @@ public class Enemigos extends Actor
         
     }
 
-    //desvanece 
     public void desvanecer_enemigo()
     {
         if(this.isAtEdge())
@@ -72,7 +74,6 @@ public class Enemigos extends Actor
         
     }
     
-    //genera la bomba
     public void dropBomb()
     {
        if (Greenfoot.getRandomNumber(1000) < 10)
@@ -82,7 +83,6 @@ public class Enemigos extends Actor
         }    
     }
     
-    //colision
     public void colision()
     {
         if(this.isTouching(nave.class))

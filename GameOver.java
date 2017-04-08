@@ -10,11 +10,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class GameOver extends Actor
 {
-    //variables
+    /**
+     * Act - do whatever the GameOver wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     GreenfootImage imagen;
     String mensaje;
     
-    //perdio
     public GameOver()
     {
         imagen=new GreenfootImage(400,300);

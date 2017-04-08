@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=HiloServer
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Hilo\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=prsr
+comment1.target=HiloServer(java.lang.String)
+comment2.params=
+comment2.target=void\ run()
+comment3.params=request
+comment3.target=void\ process(java.lang.String)
+comment4.params=
+comment4.target=java.lang.String\ getFire()
+numComments=5
