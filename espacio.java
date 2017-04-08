@@ -30,7 +30,7 @@ public class espacio extends World
     GreenfootImage img10 = new GreenfootImage("nivel10.jpg");
     
     
-    
+    // Variables 
     private int imageCount = 0;
     public int timer=3540;
     public int realTime=60;
@@ -39,7 +39,7 @@ public class espacio extends World
     int directionMisil=0;
     int x = 0;
     
-    
+    //Objetos
     Tablero puntos;
     lifes vidas;
     Nivel nivel;
@@ -56,6 +56,7 @@ public class espacio extends World
     Torre torre; 
     TorreMisil torreM;
     
+    //Sonidos
     private GreenfootSound backgroundMusic = new GreenfootSound("1.mp3");
     private GreenfootSound backgroundMusic2 = new GreenfootSound("2.mp3");
     private GreenfootSound backgroundMusic3 = new GreenfootSound("3.mp3");
@@ -67,9 +68,11 @@ public class espacio extends World
     private GreenfootSound backgroundMusic9 = new GreenfootSound("9.mp3");
     private GreenfootSound backgroundMusic10 = new GreenfootSound("10.mp3");
     
+    
+    //constructor de la clase
     public espacio()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+       //anade objetos
         super(800, 600, 1);
         n1=new nave();
         addObject(n1,400,500);
@@ -93,12 +96,13 @@ public class espacio extends World
         torre = new Torre();
         torreM = new TorreMisil();
     }
-    
+    //inicia la musica
     public void started()
     {
        backgroundMusic.playLoop();
     }
     
+    //para la musica
     public void stopped()
     {
         backgroundMusic.pause();
@@ -113,21 +117,22 @@ public class espacio extends World
         backgroundMusic10.pause();
     }
     
+    //metodo para obtener el valor de los puntos
     public Tablero getTablero()
     {
         return this.puntos;
     }
-    
+    //obtiene las vidas
     public lifes getVida()
     {
         return this.vidas;
     }
-    
+    //obtiene el tiempo
     public Timer getTimer()
     {
         return this.time;
     }
-    
+    //Cambia de escenario
     public void CambiaEscena()
     {
         if (this.nivel.getValor()==2)
@@ -189,7 +194,7 @@ public class espacio extends World
             addObject(perdio, 450, 400);  
         }
     }
-    
+    //Permite el paso de nivel
     public void SubirNivel()
     {
          if(this.time.obtenerValor() == 0)
@@ -201,10 +206,12 @@ public class espacio extends World
 
     
     }
+    //inicializa el boss
     public  void Boss()
     {
        this.addObject(boss = new Boss(),Greenfoot.getRandomNumber(500)+50, 100);  
     }
+    //da el paso a la perdida de la partida
     public void gameOver()
     {
         if(this.vidas.getVida()==0)
@@ -214,7 +221,7 @@ public class espacio extends World
             addObject(perdio, 450, 400);
         }
     }
-    
+    //asigna la vida cada 100pts
     public void vidaNueva()
     {
         if((this.puntos.obtenerValor()%100)==0 && this.puntos.obtenerValor()!=0)
@@ -223,26 +230,22 @@ public class espacio extends World
             this.puntos.incrementar();
         }
     }
-    
+    //Push a la pila
     public void pushPilaEscudo()
     {   
          this.pila.push(escudo);  
-         
-        
-      
     }
+    //Push a la pila
     public void pushPilaLaser()
     {
         this.pila.push(laser); 
-        
-        
     }
+    //Push a la pila
     public void pushPilaMisil()
     {
-        this.pila.push(misil);
-        
+        this.pila.push(misil);   
     }
-    
+    //Aparecer los powerUps en pantalla
     public void aparecerPowers()
     {
         if(this.getTimer().obtenerValor()==49)
@@ -261,7 +264,7 @@ public class espacio extends World
             addObject(laser, Greenfoot.getRandomNumber(700),Greenfoot.getRandomNumber(550)+85); 
         }
     }
-
+    //Activa los PowerUps
     public void activarPowers()
     {
        
@@ -281,11 +284,8 @@ public class espacio extends World
                 addObject(es,n1.getX(),n1.getY());
                 
             }
-        
-        
-        
     }
-    
+    //Pop a la pila
     public void popPower()
     {
         if (this.getTimer().obtenerValor()%10 == 0)
@@ -295,7 +295,7 @@ public class espacio extends World
         }
         
     }
-    
+    //Agregar Torres a la Lista
      public void AgregarTorres()
     {
         if(this.getTimer().obtenerValor()==58)
@@ -310,7 +310,7 @@ public class espacio extends World
             listaT.agregarFinal(this.torre);
         }
     }
-    
+    //dibuja las torres en el mapa
     public void dibujarTorres()
     {
         if((this.getTimer().obtenerValor()%10 == 0) && (this.getTimer().obtenerValor()!=60) && (this.getTimer().obtenerValor()!=0))
@@ -326,7 +326,7 @@ public class espacio extends World
             }
         }
     }
-    
+    //Elimina las torres
     public void eliminaTorres()
     {
         if(this.getTimer().obtenerValor()==55 || this.getTimer().obtenerValor()==45 || this.getTimer().obtenerValor()==35 || this.getTimer().obtenerValor()==25 || this.getTimer().obtenerValor()==15 || this.getTimer().obtenerValor()==5)
@@ -335,25 +335,25 @@ public class espacio extends World
         
         }
     }
-
+    //metodo de los actores
     public void act()
     {
         AgregarTorres();
         dibujarTorres();
         eliminaTorres();
         if(this.getTimer().obtenerValor()!= 0){
-        this.time.decrementar(true);
-        vidaNueva();
-        gameOver();
-        aparecerPowers();
-        activarPowers();
-        popPower();
-        started();
-        if(Greenfoot.getRandomNumber(10) < 2)
-        {
-           
-            this.addObject(new Stars(),Greenfoot.getRandomNumber(800)+50, 50);  
-        }
+            this.time.decrementar(true);
+            vidaNueva();
+            gameOver();
+            aparecerPowers();
+            activarPowers();
+            popPower();
+            started();
+            if(Greenfoot.getRandomNumber(10) < 2)
+            {
+               
+                this.addObject(new Stars(),Greenfoot.getRandomNumber(800)+50, 50);  
+            }
         if(this.time.obtenerValor() > 0){
             if(Greenfoot.getRandomNumber(300) < 2)
             {
@@ -387,7 +387,7 @@ public class espacio extends World
         }
 
         
-}
+       }
 
 
 }

@@ -1,17 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class Timer here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+
 public class Timer extends Actor
 {
+    //variables
     private GreenfootImage imagen;
     private int cont;
     private int real;
     private String mensaje;
+    
+    //constructor
     public Timer(int time,String msj,int r ){
         cont=time;
         this.real=r;

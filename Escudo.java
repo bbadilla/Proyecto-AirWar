@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Escudo extends Actor
 {
-  
+    // colision nave y escudo
      public void agarra()
     {
          if(this.isTouching(nave.class))

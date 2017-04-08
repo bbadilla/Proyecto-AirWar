@@ -2,24 +2,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 
 
-/**
- * Write a description of class Tablero here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+
 public class Tablero extends Actor
 {
-    /**
-     * Act - do whatever the Tablero wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    // variables
     private GreenfootImage imagen;
     private int cont;
     private String mensaje;
     
     public Tablero(int c,String msj)
     {
+        //asigna como se ve el tablero
         cont=c;
         mensaje=msj;
         imagen=new GreenfootImage(250,150);
@@ -37,18 +30,21 @@ public class Tablero extends Actor
    
     public void incrementar()
    {   
-       cont+=10;
+       cont+=5;
        dibuja();
     }
+    
    public void decrementar()
    {
        cont-=5;
        dibuja();
    }
+   
    public  int obtenerValor()
    {
        return cont;
    }
+   
     public void act() 
     {
         // Add your action code here.

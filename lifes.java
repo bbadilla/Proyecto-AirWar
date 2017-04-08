@@ -1,26 +1,18 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class lifes here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class lifes extends Actor
 {
-    /**
-     * Act - do whatever the lifes wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    //variables
     GreenfootImage imagen;
     private int vidas;   
     String mensaje;
     int x;
    
    
-    
+    //contructor
     public lifes(int c,String msj)
     {
+        //crea la vida
         vidas =c;
         mensaje=msj;
         imagen=new GreenfootImage(200,150);

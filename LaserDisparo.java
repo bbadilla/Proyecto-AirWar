@@ -1,21 +1,17 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class PowerDisparo here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class LaserDisparo extends Actor
 {
+    //variables
     int shotImage=1;
     int speedShot=6;
     int position;
+    
     public LaserDisparo(int direction){
         position=direction;
         
     }
-    
+    //movimiento
     public void movimiento()
     {
         switch(position){
@@ -33,9 +29,10 @@ public class LaserDisparo extends Actor
             break;
         }
     }
+    //actua
     public void act() 
     {
-        // Add your action code here.
+        
         movimiento();
         // si la bala toca la nave entra shooting sino a desvanecer
         if(this.isTouching(Enemigos.class)){

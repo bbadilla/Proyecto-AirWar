@@ -1,16 +1,13 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class MisilDisparo here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+
 public class MisilDisparo extends Actor
 {
+    //variables
    int shotImage=1;
     int speedShot=6;
     int position;
+    
     public MisilDisparo(int direction){
         position=direction;
         

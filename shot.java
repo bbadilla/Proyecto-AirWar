@@ -1,29 +1,22 @@
 
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class shot here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+
 public class shot extends Actor
 {
-    /**
-     * Act - do whatever the shot wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    //variables
     int shotImage=1;
     int speedShot=6;
     int position;
+    
+    //obtiene la direccion
     public shot(int direction){
         position=direction;
         
     }
+    
     public void act() 
     {
-        // Add your action code here.
-        
         switch(position){
             case 0:
                 this.setLocation(this.getX(),this.getY()-speedShot);
@@ -59,30 +52,9 @@ public class shot extends Actor
            this.getWorld().removeObject(this);    
          }
         }
-      
-     public void shoTorre(){
-         if(this.isTouching(Torre.class))
-         {
-            Greenfoot.playSound("ed.mp3");
-           this.getWorldOfType(espacio.class).getTablero().incrementar();
-           
-           this.removeTouching(Torre.class);
-           this.getWorld().removeObject(this); 
-         }
-        }
+     
         
-     public void shoTorreM(){
-         if(this.isTouching(TorreMisil.class))
-         {
-            Greenfoot.playSound("ed.mp3");
-           this.getWorldOfType(espacio.class).getTablero().incrementar();
-           
-           this.removeTouching(TorreMisil.class);
-           this.getWorld().removeObject(this); 
-         }
-        
-    }
-    
+     
     //metodo para cuando el disparo desvanezca cuando sale de la pantalla
      public void desvanecer()
     {

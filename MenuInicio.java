@@ -1,19 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class MenuInicio here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+
 public class MenuInicio extends World implements ButtonResponder
 {
-     private GreenfootSound backgroundMusic = new GreenfootSound("1.mp3");
+    
+    private GreenfootSound backgroundMusic = new GreenfootSound("1.mp3");
 
-    /**
-     * Constructor for objects of class MenuInicio.
-     * 
-     */
     public MenuInicio()
     {    
         // Create a new world with 800x600 cells with a cell size of 1x1 pixels.
@@ -40,8 +32,6 @@ public class MenuInicio extends World implements ButtonResponder
             
         }
     }
-    
-    
-    }
+ }
 
 

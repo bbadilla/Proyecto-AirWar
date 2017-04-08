@@ -1,18 +1,14 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-/**
- * Write a description of class Nivel here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+
 public class Nivel extends Actor
 {
+    //variables
     GreenfootImage imagen;
     private int nivel;   
     String mensaje;
     int x;
    
-    
+    //constructor
     public Nivel(int c,String msj)
     {
         nivel =c;
@@ -25,12 +21,14 @@ public class Nivel extends Actor
         
     }
    
+    //dibuja en pantalla
    public void dibuja()
    {
     imagen.clear();
     imagen.drawString(mensaje+nivel,20,20);
     setImage(imagen);   
    }
+   
    
    public int getValor()
    {

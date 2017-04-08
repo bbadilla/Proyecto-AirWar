@@ -2,6 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class nave extends Actor
 {
+    //variables
     public static final int UP=0;
     public static final int DOWN=1;
     public static final int LEFT=2;
@@ -30,6 +31,7 @@ public class nave extends Actor
         
     }
     
+    //movimiento
     public void mover(){
         int x = getX();
         int y = getY(); 
@@ -56,7 +58,7 @@ public class nave extends Actor
 
         
     }
-    
+    //aparece el disparo
     public void setShot(int direction){
         if(isShot && Greenfoot.isKeyDown("space")){
             Greenfoot.playSound("shotsound.mp3");
@@ -68,7 +70,7 @@ public class nave extends Actor
             isShot=true;
         } 
     }
-    
+    //aparece el laser de la nave
     public void setLaser(int direction){
         if(isShot && Greenfoot.isKeyDown("x")){
             Greenfoot.playSound("shotsound.mp3");
@@ -81,7 +83,7 @@ public class nave extends Actor
         } 
     
     }
-    
+    // aparece el misil de la nave
     public void setMisil(int direction){
         if(isShot && Greenfoot.isKeyDown("c")){
             Greenfoot.playSound("shotsound.mp3");
