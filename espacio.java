@@ -52,6 +52,9 @@ public class espacio extends World
     Laser laser;
     nave n1;
     BurbujaEscudo es;
+    ListaTorres listaT;
+    Torre torre; 
+    TorreMisil torreM;
     
     private GreenfootSound backgroundMusic = new GreenfootSound("1.mp3");
     private GreenfootSound backgroundMusic2 = new GreenfootSound("2.mp3");
@@ -86,7 +89,9 @@ public class espacio extends World
         laser = new Laser();
         misil = new Misil();
         es=new BurbujaEscudo();
-        
+        listaT = new ListaTorres();
+        torre = new Torre();
+        torreM = new TorreMisil();
     }
     
     public void started()
@@ -198,7 +203,7 @@ public class espacio extends World
     }
     public  void Boss()
     {
-       this.addObject(new Boss(),Greenfoot.getRandomNumber(500)+50, 100);  
+       this.addObject(boss = new Boss(),Greenfoot.getRandomNumber(500)+50, 100);  
     }
     public void gameOver()
     {
@@ -240,7 +245,7 @@ public class espacio extends World
     
     public void aparecerPowers()
     {
-        if(this.getTimer().obtenerValor()==50)
+        if(this.getTimer().obtenerValor()==49)
         {
             addObject(escudo, Greenfoot.getRandomNumber(700),Greenfoot.getRandomNumber(550)+85);    
         }
@@ -290,9 +295,52 @@ public class espacio extends World
         }
         
     }
+    
+     public void AgregarTorres()
+    {
+        if(this.getTimer().obtenerValor()==58)
+        {
+            listaT.agregarFinal(this.torre);
+            listaT.agregarFinal(this.torre);
+            listaT.agregarFinal(this.torreM);
+            listaT.agregarFinal(this.torre);
+            listaT.agregarFinal(this.torreM);
+            listaT.agregarFinal(this.torre);
+            listaT.agregarFinal(this.torreM);
+            listaT.agregarFinal(this.torre);
+        }
+    }
+    
+    public void dibujarTorres()
+    {
+        if((this.getTimer().obtenerValor()%10 == 0) && (this.getTimer().obtenerValor()!=60) && (this.getTimer().obtenerValor()!=0))
+        {
+            if(this.listaT.mostrar()== this.torre)
+            {
+                addObject(torre, Greenfoot.getRandomNumber(500)+50 , 50);
+            }
+        
+            if(this.listaT.mostrar()== this.torreM)
+            {
+                addObject(torreM, Greenfoot.getRandomNumber(500)+50 , 50);
+            }
+        }
+    }
+    
+    public void eliminaTorres()
+    {
+        if(this.getTimer().obtenerValor()==55 || this.getTimer().obtenerValor()==45 || this.getTimer().obtenerValor()==35 || this.getTimer().obtenerValor()==25 || this.getTimer().obtenerValor()==15 || this.getTimer().obtenerValor()==5)
+        {
+            this.listaT.eliminarFinal(); 
+        
+        }
+    }
 
     public void act()
     {
+        AgregarTorres();
+        dibujarTorres();
+        eliminaTorres();
         if(this.getTimer().obtenerValor()!= 0){
         this.time.decrementar(true);
         vidaNueva();
@@ -300,32 +348,33 @@ public class espacio extends World
         aparecerPowers();
         activarPowers();
         popPower();
+        started();
         if(Greenfoot.getRandomNumber(10) < 2)
         {
            
             this.addObject(new Stars(),Greenfoot.getRandomNumber(800)+50, 50);  
         }
         if(this.time.obtenerValor() > 0){
-        if(Greenfoot.getRandomNumber(300) < 2)
-        {
-            
-            this.addObject(new Enemigos(), Greenfoot.getRandomNumber(500)+50 , 50);  
-
-        }
-        if(Greenfoot.getRandomNumber(400) < 2)
-        {
-            
-            this.addObject(new Bombardero(), Greenfoot.getRandomNumber(500)+50 , 50);  
-            
-        }
-        if(Greenfoot.getRandomNumber(1000) < 2)
-        {
-           
-            this.addObject(new JetsK(),Greenfoot.getRandomNumber(500)+50, 50);  
-        }
+            if(Greenfoot.getRandomNumber(300) < 2)
+            {
+                
+                this.addObject(new Enemigos(), Greenfoot.getRandomNumber(500)+50 , 50);  
+    
+            }
+            if(Greenfoot.getRandomNumber(400) < 2)
+            {
+                
+                this.addObject(new Bombardero(), Greenfoot.getRandomNumber(500)+50 , 50);  
+                
+            }
+            if(Greenfoot.getRandomNumber(1000) < 2)
+            {
+               
+                this.addObject(new JetsK(),Greenfoot.getRandomNumber(500)+50, 50);  
+            }
         
        
-    }
+         }
         
         }
         else{
@@ -334,6 +383,7 @@ public class espacio extends World
             CambiaEscena();
             time.setValor(false);
             this.time.decrementar(true);
+            
         }
 
         

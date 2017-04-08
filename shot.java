@@ -1,3 +1,4 @@
+
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
@@ -43,21 +44,42 @@ public class shot extends Actor
         this.shooting();}
         else{
         this.desvanecer();}
+       
     }
     
     //metodo para eliminar enemigo
      public void shooting()
      {
-     if(this.isTouching(Enemigos.class))
-     {
-       Greenfoot.playSound("ed.mp3");
-       this.getWorldOfType(espacio.class).getTablero().incrementar();
-       
-       this.removeTouching(Enemigos.class);
-       this.getWorld().removeObject(this); 
-       
-         
-     }
+         if(this.isTouching(Enemigos.class))
+         {
+           Greenfoot.playSound("ed.mp3");
+           this.getWorldOfType(espacio.class).getTablero().incrementar();
+           
+           this.removeTouching(Enemigos.class);
+           this.getWorld().removeObject(this);    
+         }
+        }
+      
+     public void shoTorre(){
+         if(this.isTouching(Torre.class))
+         {
+            Greenfoot.playSound("ed.mp3");
+           this.getWorldOfType(espacio.class).getTablero().incrementar();
+           
+           this.removeTouching(Torre.class);
+           this.getWorld().removeObject(this); 
+         }
+        }
+        
+     public void shoTorreM(){
+         if(this.isTouching(TorreMisil.class))
+         {
+            Greenfoot.playSound("ed.mp3");
+           this.getWorldOfType(espacio.class).getTablero().incrementar();
+           
+           this.removeTouching(TorreMisil.class);
+           this.getWorld().removeObject(this); 
+         }
         
     }
     
@@ -74,4 +96,3 @@ public class shot extends Actor
         
     }
 }
-

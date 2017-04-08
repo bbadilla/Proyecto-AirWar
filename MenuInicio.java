@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MenuInicio extends World implements ButtonResponder
 {
+     private GreenfootSound backgroundMusic = new GreenfootSound("1.mp3");
 
     /**
      * Constructor for objects of class MenuInicio.
@@ -15,16 +16,12 @@ public class MenuInicio extends World implements ButtonResponder
      */
     public MenuInicio()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        // Create a new world with 800x600 cells with a cell size of 1x1 pixels.
         super(800, 600, 1);
-        setBackground("space.jpg");
-        addObject(new Button("Iniciar",this),100,100);
-        addObject(new Button("Cerrar",this),100,150);
-        //addObject(new Button("Cargar",this),100,100);
-        //addObject(new Button("Guardar",this),100,100);
-        //addObject(new Button("Cambiar nave",this),100,100);
-        //addObject(new Button("Cambiar color",this),100,100);
         
+        addObject(new Button("Iniciar",this),175,100);
+        addObject(new Button("Cerrar",this),600,100);
+       
         
     }
      public void clickBoton(Button button)
@@ -35,7 +32,16 @@ public class MenuInicio extends World implements ButtonResponder
             getBackground().setColor(greenfoot.Color.GRAY);
             getBackground().fill();
             
+            
+        }
+        
+        if ("Cerrar".equals(button.getTitle()) ) {
+           Greenfoot.stop();
+            
         }
     }
     
+    
     }
+
+

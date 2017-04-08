@@ -27,12 +27,14 @@ public class Timer extends Actor
     imagen.drawString(mensaje+real,20,20);
     setImage(imagen);   
    }
-   public void decrementar()
+   public void decrementar(boolean x)
    {
+       if (x==true){
        if ((cont%59)==0){
            real--;
            dibuja();
         }
+    }
        cont-=1;
        
        
@@ -41,10 +43,15 @@ public class Timer extends Actor
    {
        return real;
    }
-   public void setValor(){
+   public void setValor(boolean valid)
+   {
+       if(valid == false){
        this.cont=3540;
        real=60;
-       dibuja();
+       dibuja();}else{
+        this.cont = 0;
+        real=0;
+    }
     }
     public void act() 
     {
